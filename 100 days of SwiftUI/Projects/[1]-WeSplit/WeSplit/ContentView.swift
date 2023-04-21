@@ -73,6 +73,8 @@ struct ContentView: View {
                 
                 Section("Grand Total") {
                     Text(grandTotal, format: weSplitCurrency)
+                        .foregroundColor(tipPercentage > 0 ? .black : .red)
+                    // Make grand total red if tip is 0%
                 }
             }
             .navigationTitle("WeSplit")
