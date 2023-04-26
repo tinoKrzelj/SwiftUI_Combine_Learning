@@ -11,8 +11,22 @@ struct ContentView: View {
     @State private var isEditActive = false
     
     var body: some View {
-        Text("dsadas")
-            .prominentTitle()
+        ZStack {
+            LinearGradient(colors: [.white, .blue], startPoint: .top, endPoint: .bottom)
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    ForwardButton(title: "Back") { print("Back") }
+                    ForwardButton(title: "Next") { print("Next") }
+                }
+                .offset(x: -24, y: -32)
+            }
+        }
+        .ignoresSafeArea()
     }
     
 }
@@ -23,22 +37,42 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - Custom View
+// Using the custom modifier
+
+struct ForwardButton: View {
+    var title: String
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .forwardButtonStyle()
+                //.modifier(ForwardButtonStyle())
+        }
+    }
+}
+
 // MARK: - Custom ViewModifiers
 
-struct ProminentTitle: ViewModifier {
+struct ForwardButtonStyle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.largeTitle)
-            .foregroundColor(.blue)
+            .font(.headline)
+            .foregroundColor(.black)
+            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            .background(.white)
+            .clipShape(Capsule())
+            
     }
 }
 
 // MARK: - View Extension
 
 extension View {
-    func prominentTitle() -> some View {
-        modifier(ProminentTitle())
+    func forwardButtonStyle() -> some View {
+        modifier(ForwardButtonStyle())
     }
 }
 
