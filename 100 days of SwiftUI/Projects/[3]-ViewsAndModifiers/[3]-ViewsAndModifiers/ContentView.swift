@@ -9,19 +9,47 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isEditActive = false
+    @State private var searchTextField = ""
     
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.white, .blue], startPoint: .top, endPoint: .bottom)
-            
+            LinearGradient(colors: [.black, .blue], startPoint: .top, endPoint: .bottom)
+                        
             VStack {
+                
+//                Button {
+//                    isEditActive.toggle()
+//                } label: {
+//                    Image(systemName: isEditActive ? "pencil.circle.fill" : "pencil.circle")
+//                        .frame(maxWidth: 60, maxHeight: 60)
+//                        .font(Font.largeTitle)
+//                        .background(.white)
+//                        .clipShape(RoundedRectangle(cornerRadius: 10.0))
+//                        .shadow(color: .gray,radius: 4.0)
+//                }
+                
                 Spacer()
                 
+                Group {
+                    TextField("Search...", text: $searchTextField)
+                        .frame(maxHeight: 40)
+                        .padding()
+                }.clipShape(RoundedRectangle(cornerRadius: 10.0))
+                    .background(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 8.0))
+                    .padding()
+                    .shadow(color: .white, radius: 2.0)
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                                
                 HStack {
                     Spacer()
-                    
-                    ForwardButton(title: "Back") { print("Back") }
-                    ForwardButton(title: "Next") { print("Next") }
+                    ForwardButton(title: "Back") { isEditActive = false }
+                    ForwardButton(title: "Next") { isEditActive = true }
                 }
                 .offset(x: -24, y: -32)
             }
