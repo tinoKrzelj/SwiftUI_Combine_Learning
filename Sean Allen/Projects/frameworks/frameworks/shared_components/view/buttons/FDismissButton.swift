@@ -32,6 +32,12 @@ struct FDismissButton: View {
     }
 }
 
-#Preview {
-    FDismissButton(isShown: .constant(false))
+//#Preview {
+//    FDismissButton(isShown: .constant(false))
+//}
+
+struct FDismissButton_Precview: PreviewProvider {
+    static var previews: some View {
+        FDismissButton(isShown: .constant(false))
+    }
 }

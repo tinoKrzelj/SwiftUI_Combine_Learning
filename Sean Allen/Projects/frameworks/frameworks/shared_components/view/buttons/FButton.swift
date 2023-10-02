@@ -24,6 +24,12 @@ struct FButton: View {
     }
 }
 
-#Preview {
-    FButton(title: "Test Title")
+//#Preview {
+//    FButton(title: "Test Title")
+//}
+
+struct FButton_Precview: PreviewProvider {
+    static var previews: some View {
+        FButton(title: "Test Title")
+    }
 }

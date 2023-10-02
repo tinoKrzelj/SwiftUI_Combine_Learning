@@ -40,6 +40,12 @@ struct FrameworksListView: View {
     
 }
 
-#Preview {
-    FrameworksListView()
+//#Preview {
+//    FrameworksListView()
+//}
+
+struct FrameworksListView_Precview: PreviewProvider {
+    static var previews: some View {
+        FrameworksListView()
+    }
 }

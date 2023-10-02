@@ -42,6 +42,12 @@ struct FrameworksGridView: View {
     
 }
 
-#Preview {
-    FrameworksGridView()
+//#Preview {
+//    FrameworksGridView()
+//}
+
+struct FrameworksGridView_Precview: PreviewProvider {
+    static var previews: some View {
+        FrameworksGridView()
+    }
 }

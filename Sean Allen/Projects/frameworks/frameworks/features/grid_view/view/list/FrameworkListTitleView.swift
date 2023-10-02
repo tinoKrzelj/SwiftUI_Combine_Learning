@@ -28,7 +28,12 @@ struct FrameworkListTitleView: View {
     }
 }
 
-#Preview {
-    FrameworkListTitleView(framework: MockData.sampleFramework)
-}
+//#Preview {
+//    FrameworkListTitleView(framework: MockData.sampleFramework)
+//}
 
+struct FrameworkListTitleView_Precview: PreviewProvider {
+    static var previews: some View {
+        FrameworkListTitleView(framework: MockData.sampleFramework)
+    }
+}

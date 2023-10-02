@@ -48,6 +48,12 @@ struct FrameworkListDetailView: View {
     }
 }
 
-#Preview {
-    FrameworkListDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+//#Preview {
+//    FrameworkListDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+//}
+
+struct FrameworkListDetailView_Precview: PreviewProvider {
+    static var previews: some View {
+        FrameworkListDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+    }
 }

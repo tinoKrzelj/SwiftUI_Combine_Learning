@@ -45,6 +45,12 @@ struct FrameworkGridDetailView: View {
     }
 }
 
-#Preview {
-    FrameworkGridDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+//#Preview {
+//    FrameworkGridDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+//}
+
+struct FrameworkGridDetailView_Precview: PreviewProvider {
+    static var previews: some View {
+        FrameworkGridDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+    }
 }
