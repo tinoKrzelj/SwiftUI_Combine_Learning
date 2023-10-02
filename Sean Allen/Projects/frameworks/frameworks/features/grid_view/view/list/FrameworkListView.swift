@@ -21,10 +21,10 @@ struct FrameworksListView: View {
     
     // MARK: - View Protocol
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(MockData.frameworks) { framework in
-                    NavigationLink(destination: FrameworkListDetailView(framework: framework, isShowingDetailView: $viewModel.isShowingDetailView)) {
+                    NavigationLink(value: framework) {
                         FrameworkListTitleView(framework: framework)
                     }
                     .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
@@ -34,6 +34,9 @@ struct FrameworksListView: View {
             .navigationTitle("🍏 Frameworks")
             .navigationBarTitleDisplayMode(.large)
             .scrollContentBackground(.hidden)
+            .navigationDestination(for: Framework.self) { framework in
+                FrameworkListDetailView(framework: framework)
+            }
         }
         .tint(Color(.label))
     }

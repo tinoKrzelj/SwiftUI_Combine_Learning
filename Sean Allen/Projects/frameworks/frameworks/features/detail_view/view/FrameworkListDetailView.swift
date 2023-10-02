@@ -13,7 +13,7 @@ struct FrameworkListDetailView: View {
     let framework: Framework
     
     // MARK: - Property Wrappers
-    @Binding var isShowingDetailView: Bool
+//    @Binding var isShowingDetailView: Bool
     @State private var isShowingSafariView = false
     
     
@@ -41,6 +41,7 @@ struct FrameworkListDetailView: View {
             .controlSize(.large)
             .buttonBorderShape(.capsule)
             .tint(.red)
+            .padding(.bottom)
         }
         .sheet(isPresented: $isShowingSafariView, content: {
             SafariView(urlString: framework.urlString)
@@ -54,6 +55,7 @@ struct FrameworkListDetailView: View {
 
 struct FrameworkListDetailView_Precview: PreviewProvider {
     static var previews: some View {
-        FrameworkListDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+//        FrameworkListDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+        FrameworkListDetailView(framework: MockData.sampleFramework)
     }
 }
