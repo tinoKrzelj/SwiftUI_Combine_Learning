@@ -24,15 +24,19 @@ struct AlertContext {
 
 struct BarcodeScannerView: View {
     
-    @State private var scannedCode = ""
-    @State private var alertItem: AlertItem?
+    // MARK: - StateObject
+    
+    @StateObject var viewModel = BarcodeScannerViewModel()
+    
+//    @State private var scannedCode = ""
+//    @State private var alertItem: AlertItem?
     @State private var isErrorAlertShown = false
     
     var body: some View {
         NavigationStack {
             VStack {
                 // Step 3
-                ScannerView(scannedCode: $scannedCode, alertItem: $alertItem)
+                ScannerView(scannedCode: $viewModel.scannedCode, alertItem: $viewModel.alertItem)
                     .frame(maxWidth: .infinity, maxHeight: 300)
                 
                 Spacer()
@@ -41,17 +45,16 @@ struct BarcodeScannerView: View {
                 Label("Scanned Barcode:", systemImage: "barcode.viewfinder")
                     .font(.title)
                 
-                Text(scannedCode.isEmpty ? "Not yet scanned" : scannedCode)
+                Text(viewModel.statusText)
                     .bold()
                     .font(.largeTitle)
-                    .foregroundColor(scannedCode.isEmpty ? .red : .green)
+                    .foregroundColor(viewModel.statusTextColor)
                     .padding()
             }
             
             .navigationTitle("Barcode Scanner")
-            .alert(<#T##titleKey: LocalizedStringKey##LocalizedStringKey#>, isPresented: <#T##Binding<Bool>#>, presenting: <#T##T?#>, actions: <#T##(T) -> View#>)
-            
-            Nastaviti 5:02:45
+            // Alert nije zavrsen jer on koristi approach koji je izbacen u novim verzijama :(
+//            .alert(<#T##titleKey: LocalizedStringKey##LocalizedStringKey#>, isPresented: <#T##Binding<Bool>#>, presenting: <#T##T?#>, actions: <#T##(T) -> View#>)
         }
     }
 }
